@@ -1,0 +1,12 @@
+﻿@model lab2B.Models.EventModel
+@{
+    ViewBag.Title = "addEvents";
+}
+
+<h2>addEvents</h2>
+
+<form asp-action="addEvents" method="post">
+    <input name="Name" type="text" value="@Model.Name"/>
+    <input name="Location" type="text" value="@Model.Location"/>
+    <button type="submit">Add Event</button>
+</form>

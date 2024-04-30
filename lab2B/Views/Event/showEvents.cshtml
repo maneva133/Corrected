@@ -1,0 +1,34 @@
+﻿@model List<lab2B.Models.EventModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ИД</th>
+            <th>Име</th>
+            <th>Локација</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var evt in Model)
+        {
+            <tr>
+                <td>@evt.Id</td>
+                <td>@evt.Name</td>
+                <td>@evt.Location</td>
+                <td>
+                    <!-- Копче за уредување на настан -->
+                    <a href="@Url.Action("updateEvent", "Event", new { i = evt.Id })" class="btn btn-primary">Уреди</a>
+                </td>
+                <td>
+                    <!-- Копче за бришење на настан -->
+                    <form action="@Url.Action("DeleteEvent", "Event",new {i=evt.Id-1})" method="post">
+                        <input type="hidden" name="eventId" value="@evt.Id" />
+                        <button type="submit" class="btn btn-danger">Избриши</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
